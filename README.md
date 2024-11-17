@@ -16,7 +16,8 @@ Die Sortierung ist nicht nach Wichtigkeit oder grad der Kenntnisse, sondern rein
 
 ---
 
-## **Virtualisierung**
+## **Virtualisierung** ![grafik](https://github.com/user-attachments/assets/a7821a07-bd50-4e7d-b1e4-ff03e8a7114e)
+
 
 - ProxMox: gute Kenntnisse
 - Einrichtung von Virtualisierungs-Cluster aus 3-4 Nodes mit Einsatz von ProxMox
