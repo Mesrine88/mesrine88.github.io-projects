@@ -16,7 +16,7 @@ Die Sortierung ist nicht nach Wichtigkeit oder grad der Kenntnisse, sondern rein
 
 ---
 
-## **Virtualisierung** ![grafik](https://github.com/user-attachments/assets/a7821a07-bd50-4e7d-b1e4-ff03e8a7114e)
+## **Virtualisierung** 
 
 
 - ProxMox: gute Kenntnisse
