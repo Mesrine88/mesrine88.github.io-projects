@@ -1,0 +1,694 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Überblick über bisher durchgeführte Projekte (Produktiv und im HomeLab)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="454c382b-937b-4497-be81-e709778ec87f" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/code_purple.svg"/></div><h1 class="page-title">Überblick über bisher durchgeführte Projekte (Produktiv und im HomeLab)</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-person"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesPerson"><path d="M10.9536 7.90088C12.217 7.90088 13.2559 6.79468 13.2559 5.38525C13.2559 4.01514 12.2114 2.92017 10.9536 2.92017C9.70142 2.92017 8.65137 4.02637 8.65698 5.39087C8.6626 6.79468 9.69019 7.90088 10.9536 7.90088ZM4.4231 8.03003C5.52368 8.03003 6.42212 7.05859 6.42212 5.83447C6.42212 4.63843 5.51245 3.68945 4.4231 3.68945C3.33374 3.68945 2.41846 4.64966 2.41846 5.84009C2.42407 7.05859 3.32251 8.03003 4.4231 8.03003ZM1.37964 13.168H5.49561C4.87231 12.292 5.43384 10.6074 6.78711 9.51807C6.18628 9.14746 5.37769 8.87231 4.4231 8.87231C1.95239 8.87231 0.262207 10.6917 0.262207 12.1628C0.262207 12.7974 0.548584 13.168 1.37964 13.168ZM7.50024 13.168H14.407C15.4009 13.168 15.7322 12.8423 15.7322 12.2864C15.7322 10.8489 13.8679 8.88354 10.9536 8.88354C8.04492 8.88354 6.17505 10.8489 6.17505 12.2864C6.17505 12.8423 6.50635 13.168 7.50024 13.168Z"></path></svg></span>Besitzer/-in</th><td><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">w</span></span>wwlabs Homelab</span></td></tr><tr class="property-row property-row-verification"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesVerification"><path d="M3.86426 14.0459H5.32715C5.45475 14.0459 5.56185 14.0892 5.64844 14.1758L6.6875 15.2148C7.13411 15.6615 7.56934 15.8825 7.99316 15.8779C8.42155 15.8779 8.85677 15.6569 9.29883 15.2148L10.3379 14.1758C10.429 14.0892 10.5384 14.0459 10.666 14.0459H12.1221C12.751 14.0459 13.2158 13.8955 13.5166 13.5947C13.8219 13.2939 13.9746 12.8268 13.9746 12.1934V10.7305C13.9746 10.6029 14.0202 10.4958 14.1113 10.4092L15.1436 9.37012C15.5902 8.92806 15.8112 8.49284 15.8066 8.06445C15.8066 7.63607 15.5856 7.19857 15.1436 6.75195L14.1113 5.71289C14.0202 5.6263 13.9746 5.52148 13.9746 5.39844V3.92871C13.9746 3.30436 13.8242 2.83952 13.5234 2.53418C13.2227 2.22884 12.7555 2.07617 12.1221 2.07617H10.666C10.5384 2.07617 10.429 2.03288 10.3379 1.94629L9.29883 0.914062C8.85677 0.462891 8.42155 0.239583 7.99316 0.244141C7.56934 0.244141 7.13411 0.467448 6.6875 0.914062L5.64844 1.94629C5.56185 2.03288 5.45475 2.07617 5.32715 2.07617H3.86426C3.23535 2.07617 2.76823 2.22656 2.46289 2.52734C2.16211 2.82812 2.01172 3.29525 2.01172 3.92871V5.39844C2.01172 5.52148 1.96842 5.6263 1.88184 5.71289L0.849609 6.75195C0.402995 7.19857 0.179688 7.63607 0.179688 8.06445C0.179688 8.49284 0.402995 8.92806 0.849609 9.37012L1.88184 10.4092C1.96842 10.4958 2.01172 10.6029 2.01172 10.7305V12.1934C2.01172 12.8223 2.16211 13.2871 2.46289 13.5879C2.76823 13.8932 3.23535 14.0459 3.86426 14.0459ZM7.23438 11.4277C7.10221 11.4277 6.98372 11.4004 6.87891 11.3457C6.77409 11.291 6.67155 11.2021 6.57129 11.0791L4.89648 9.04199C4.83724 8.96452 4.79167 8.88477 4.75977 8.80273C4.72786 8.7207 4.71191 8.63639 4.71191 8.5498C4.71191 8.37663 4.77116 8.22852 4.88965 8.10547C5.0127 7.97786 5.16081 7.91406 5.33398 7.91406C5.44336 7.91406 5.54134 7.93685 5.62793 7.98242C5.71452 8.02799 5.80339 8.10775 5.89453 8.22168L7.20703 9.88965L10.0371 5.36426C10.1829 5.12728 10.3675 5.00879 10.5908 5.00879C10.7594 5.00879 10.9098 5.06348 11.042 5.17285C11.1787 5.28223 11.2471 5.42578 11.2471 5.60352C11.2471 5.68099 11.2288 5.76302 11.1924 5.84961C11.1559 5.93164 11.1149 6.00911 11.0693 6.08203L7.87012 11.0723C7.78809 11.1908 7.69238 11.2796 7.58301 11.3389C7.47819 11.3981 7.36198 11.4277 7.23438 11.4277Z"></path></svg></span>Verifizierung</th><td>Verifiziert</td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-green">Administration</span><span class="selected-value select-value-color-red">Homelab</span><span class="selected-value select-value-color-pink">SUMUP</span><span class="selected-value select-value-color-purple">WWLABS</span></td></tr></tbody></table></header><div class="page-body"><p id="df4312a4-3fd3-4c2e-adcd-c8efb74801e7" class="">Hier sind sämtliche Projekte aufgeführt, die ich bisher durchgeführt habe.</p><p id="67ba67b1-9c41-47a3-b065-fe89f367419e" class="">Die Umsetzung erfolgte im Home-Lab, im Praktikum für Kunden, in der Cloud oder für das persönliche Umfeld.</p><p id="bef54e85-f171-42e9-80fb-f1d3868c6cc2" class="">Die Liste ist nicht vollständig, da einige Topics in Vergessenheit geraten sind. Die Liste wird bei Gelegenheit fortgeführt.</p><p id="77e519b5-df17-4d04-85fe-d9a3c676ec58" class="">Für die meisten Inhalte werden nach und nach eigene Artikel aus meinen Notizen folgen.</p><p id="17b5b737-f832-4a69-8ffb-59b8614a7e41" class="">Die Sortierung ist nicht nach Wichtigkeit oder grad der Kenntnisse, sondern rein zufällig!</p><hr id="d0db7edb-2f1c-4dbf-9c29-95b99c2eb91c"/><p id="22dd6ff3-116a-411c-816b-8ad87cf3ec78" class="">
+</p><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><strong>Virtualisierung</strong></summary><div class="indented"><ul id="00680a8f-c9f9-4f94-a7f4-9a5a3a3895a8" class="bulleted-list"><li style="list-style-type:disc">ProxMox: gute Kenntnisse</li></ul><ul id="5771415d-837d-4756-9b80-01013add7267" class="bulleted-list"><li style="list-style-type:disc">Einrichtung von Virtualisierungs-Cluster aus 3-4 Nodes mit Einsatz von ProxMox</li></ul><ul id="c6e81aa8-fa78-4d15-a3d8-8ebebd2fd7e4" class="bulleted-list"><li style="list-style-type:disc">ProxMox Backupserver Global Replication zwischen mehreren Standorten</li></ul><ul id="2f02c3dd-484a-4cb8-bd3c-88f5bf797bdd" class="bulleted-list"><li style="list-style-type:disc">VMware, Virtual Box und Hyper-Virtualisierung</li></ul><ul id="9c8953d0-16ea-4bfd-8943-56ad05ceaf57" class="bulleted-list"><li style="list-style-type:disc">Microsoft Virtual PC als erster Hypervisor</li></ul><ul id="f31cce9f-7169-4c20-a4d9-176faaa5c105" class="bulleted-list"><li style="list-style-type:disc">Android Emulatoren: BlueStacks, Nox Player, BlissOS, Remix OS, Andy, Android x86 VM und Genymotion als persönlicher Favorit Android Emulator</li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Mail</summary><div class="indented"><ul id="2132ea24-f7cf-4e4d-92f0-1f2ec72c254f" class="bulleted-list"><li style="list-style-type:disc">Exchange-Server für Kunden im Praktikum</li></ul><ul id="0724529f-571a-440d-a2a4-ebde884573cf" class="bulleted-list"><li style="list-style-type:disc">MailQow via Docker und onPrem (Linux Mailserver-Stack)</li></ul><ul id="4b0cae07-dde0-44eb-80ae-65d4460724ee" class="bulleted-list"><li style="list-style-type:disc">Einrichtung von SPF, DKIM und DMARC</li></ul><ul id="59ccadff-00e9-463b-b6e4-f042a74af3dc" class="bulleted-list"><li style="list-style-type:disc">Mailpiler als Mailarchiv</li></ul><p id="27c8c2ef-0d59-4b80-83a1-254ac1fc86fb" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Docker</summary><div class="indented"><ul id="ec7211ca-206b-4396-8877-2ec0a62e553d" class="bulleted-list"><li style="list-style-type:disc">Docker und Docker Compose (Windows &amp; Linux, Desktop &amp; Terminal)</li></ul><ul id="4dba58ac-fe73-49e6-8cc8-7f3758dbc46e" class="bulleted-list"><li style="list-style-type:disc">Portainer als grafisches Management-Tool für Docker</li></ul><ul id="d29bc58d-b530-48b5-a28a-cedf7d408f24" class="bulleted-list"><li style="list-style-type:disc">Dockge zur Administrierung von Docker Compose</li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">VPN</summary><div class="indented"><ul id="6170960a-89f3-4ec6-9f9a-f77b7fedc2d6" class="bulleted-list"><li style="list-style-type:disc">OpenVPN für mehrere Kunden im Praktikum</li></ul><ul id="aa0b85a9-8d7f-453b-8657-791198f31524" class="bulleted-list"><li style="list-style-type:disc">Wireguard-Server als LXC-Container und Verbindung mit Windows, Linux und Android</li></ul><ul id="39ace387-9a61-4a44-bbc8-dc2a36187303" class="bulleted-list"><li style="list-style-type:disc">Twingate: im regelmäßigen Einsatz, moderne Zero Trust Network Access Solution</li></ul><ul id="44ed47ad-d741-4e68-a361-399431a3d633" class="bulleted-list"><li style="list-style-type:disc">Cloudflare Zero Trust Network Access (ZTNA) und Cloudflare Tunnel</li></ul><ul id="4acdef10-1ca8-4245-9504-5ae7d5adba9b" class="bulleted-list"><li style="list-style-type:disc">OPNsense: Site-to-Site Tunnel mittels Wireguard zur Verbindung von 2 Standorten</li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Benutzerverwaltung</summary><div class="indented"><ul id="0ffffff5-bcc1-4201-8132-d74c12bdd242" class="bulleted-list"><li style="list-style-type:disc">Microsoft Active Directory und Group Policies, gute Kenntnisse</li></ul><ul id="545c72b0-e150-490e-8134-1ee9431cff02" class="bulleted-list"><li style="list-style-type:disc">Samba-Server: Linux Domaincontroller auf dem Raspberry Pi 400</li></ul><ul id="19f10622-fe86-4190-a929-d16e5d02770b" class="bulleted-list"><li style="list-style-type:disc">OpenLDAP-Server als LXC-Container im HomeLab (Test-Deployment)</li></ul><ul id="63f41ed8-507c-4d44-9555-99a5d117641e" class="bulleted-list"><li style="list-style-type:disc">TurnKey Domaincontroller, Linux DC mit GUI als LCX-Container</li></ul><ul id="b901269f-380e-4b44-a4ec-2bacefd9b6d7" class="bulleted-list"><li style="list-style-type:disc">UCS Univention Corporate Server, Debian-basierte Lösung, DC mit GUI</li></ul><p id="bf5df6d5-c090-4c16-9748-636753a9f065" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Scripting</summary><div class="indented"><ul id="3593f417-0393-4f7e-836e-493f35764b32" class="bulleted-list"><li style="list-style-type:disc">PowerShell gute Kenntnisse, </li></ul><ul id="60724ae7-9948-4322-bd2c-929468e26549" class="bulleted-list"><li style="list-style-type:disc">z.B. als deutlich erweitertes Schulprojekt: Skripte zur Erstellung einer Infrastruktur aus 2 DCs, 1 FS und 1 Client mittels Hyper-V, unattended Windows-Installation, Installation aller benötigten Serverrollen und Dienste, AD-Domain-Erstellung und Join aller Domainmember, Erstellung von 20 Usern aus einer CSV, Einrichtung von Berechtigungsgruppen aus einer CSV und Zuweisung von Berechtigungen nach dem Konzept AGDLP, Erstellung von mehrschichtigen Netzwerk-Freigaben auf dem FS und Vergabe von Berechtigungen</li></ul><ul id="89c78ee0-c89b-47dc-bbc5-3c848a20134d" class="bulleted-list"><li style="list-style-type:disc">Linux-Bash, gute Kenntnisse</li></ul><ul id="27977096-5dc7-4a33-be93-ac07279d2c4a" class="bulleted-list"><li style="list-style-type:disc">z.B. mein Github-Postinstall-Script: Update, Installation der Standardtools, Einrichtung von SSH, Einrichtung von meiner individualisierten MOTD-Meldung, Installation von Starship, FastFetch und Nerd Fonts, Anpassung der BashRC und und eigener Aliase</li></ul><ul id="71894bb1-be24-469b-a5ef-1be4d9a0468d" class="bulleted-list"><li style="list-style-type:disc">erste Kenntnisse in Python</li></ul><p id="7a052569-3d53-4810-a9e1-2f95513a92b2" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Webauftritt und CMS</summary><div class="indented"><ul id="1d616124-be94-471a-a30c-d57fef844158" class="bulleted-list"><li style="list-style-type:disc">Ghost, modernes CMS als eigene Webseite, Docker und OnPrem</li></ul><ul id="20eca7b4-809b-425a-9d04-a94848e134b4" class="bulleted-list"><li style="list-style-type:disc">WordPress für einen Kunden im Praktikum, deployed als LCX-Container auf ProxMox mit MariaDB, Redis, PhpMyAdmin, Fail2Ban und SSH-Zugang mit Public Key Authentifizierung</li></ul><ul id="0bcc9d1a-61d3-4ac0-bfc8-f240c4249fce" class="bulleted-list"><li style="list-style-type:disc">Drupal, Django &amp; Processwire CMS als Docker &amp; onPrem im HomeLab</li></ul><ul id="5d085b95-4c6e-46a8-a3ea-d6a4e2baeca1" class="bulleted-list"><li style="list-style-type:disc">Hugo: simpler “static website Generator” mittels Markup-Dateien als Docker, LXC, Github Pages &amp; Cloudflare Pages </li></ul><ul id="2f96f863-a90f-4791-9ac6-ac765d9f5f45" class="bulleted-list"><li style="list-style-type:disc">Grav: simples CMS, Markup-Files in Ordners, mit grafischer Verwaltung</li></ul><p id="ddc637a2-a24f-43fd-bb0d-9b387059f43d" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Fileserver, NAS, RAID</summary><div class="indented"><ul id="fb6f92f9-13bc-4d47-998d-b0eeb2e24e27" class="bulleted-list"><li style="list-style-type:disc">Windows Fileserverrolle auf Windows Server 2018, 2022 und 2025 </li></ul><ul id="5b1bb293-8aeb-4c28-9f39-b0a251cce3ee" class="bulleted-list"><li style="list-style-type:disc">OpenMediaVault: moderne Debian basierte NAS-Lösung</li></ul><ul id="e2a8cd37-c39b-4ebb-a2bf-329194cf958b" class="bulleted-list"><li style="list-style-type:disc">Unraid: moderne NAS-Lösung mit sehr vielen Funktionen</li></ul><ul id="6df50217-2ec6-4c61-8363-56464e656898" class="bulleted-list"><li style="list-style-type:disc">TrueNAS: FreeBSD basiertes und sehr umfangreiches NAS-OS, RAID mit ZFS, nutzt ECC-RAM</li></ul><ul id="fcfbe4dd-8a91-461d-87ef-7194b9ec3218" class="bulleted-list"><li style="list-style-type:disc">zmb-Fileserver: vom Bashclub bereitgestellte Samba Fileserver-Lösung als LXC-Container</li></ul><ul id="e8801f81-c2be-4018-a98d-0336cdafd5b3" class="bulleted-list"><li style="list-style-type:disc">Debian mit manuell erstellten SMB und NFS-Shares und ZFS-Dateisystem</li></ul><ul id="cd043f3b-b70f-480c-863b-68a25137f4cc" class="bulleted-list"><li style="list-style-type:disc">Turnkey Fileserver als LXC-Container mit einer Web-UI</li></ul><ul id="6e76b778-3b80-4edb-bd2c-80ad495d619b" class="bulleted-list"><li style="list-style-type:disc">Kodi: freier Media-Server auf dem Raspberry Pi</li></ul><p id="19352af8-d68c-4d11-ba45-6c32afcca5e6" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Wiki, Doku-System, SSOK</summary><div class="indented"><ul id="889fbddd-6573-45a0-892b-82239a44fd63" class="bulleted-list"><li style="list-style-type:disc">DokuWiki als Docker und LXC</li></ul><ul id="b9f221ea-3066-47e0-b7cd-f32a9d7be869" class="bulleted-list"><li style="list-style-type:disc">WikiJS, Wiki-System mit Markup, HTML, WYSIWYG-Editor und weiteren Funktionen</li></ul><ul id="c5eb6520-c5d9-4f08-ab01-e90c85a8e415" class="bulleted-list"><li style="list-style-type:disc">Notion als Wissenssammlung und Notizbuch</li></ul><ul id="e8f0b402-7fa6-46c2-b52a-d73b7dca7c69" class="bulleted-list"><li style="list-style-type:disc">OneNote und Obsidian als Notizbuch und “Single Source of Knowledge”</li></ul><ul id="b3ea191b-16e3-4303-af4d-925df5453da3" class="bulleted-list"><li style="list-style-type:disc">Raneto, Plattform zur Verwaltung der Wissensdatenbank, Markup</li></ul><ul id="eb6404c4-d84f-4a22-9fab-b25c6b913c0f" class="bulleted-list"><li style="list-style-type:disc">Bookstack, Docsie, Fosswiki, MoinMoin, Documize, xWiki und Pelican als Testdeployment via Docker und als LXC, bei der Suche nach einem guten Wiki/Doku System</li></ul><ul id="eec32b2a-fcb1-487f-9f45-b797369d80f5" class="bulleted-list"><li style="list-style-type:disc">PineDocs: simple grafische Lösung zur Darstellung z.B. einer Doku</li></ul><ul id="09323866-88e1-4d8a-9e85-15d6d36d1ef9" class="bulleted-list"><li style="list-style-type:disc">HBStack: moderne grafische Darstellung von Inhalten und Markup-Files</li></ul><ul id="e2a2c12b-1359-4148-9efb-fd8e96b7b863" class="bulleted-list"><li style="list-style-type:disc">ReadtheDocs: Framework zur Verwaltung von Dokus</li></ul><p id="a3b2761a-8bde-4bc3-894c-6233a1c6b6d4" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Collab-Tools</summary><div class="indented"><ul id="1ffeb2f2-79eb-4351-b3c0-d7d5a3528d5d" class="bulleted-list"><li style="list-style-type:disc">Nextcloud als LXC, Docker, Bitnami und Turnkey Templates </li></ul><ul id="c93f15fd-971b-47dd-a881-a37f1c33eb3d" class="bulleted-list"><li style="list-style-type:disc">z.B. für einen Kunden im Praktikum: Deployment von Nextcloud als LXC, mit Fail2Ban, Webmin, MariaDB und Redis, Integration von OnlyOffice Docs</li></ul><ul id="3ba210d8-e4f2-4b34-b957-3ddf60e60519" class="bulleted-list"><li style="list-style-type:disc">OnlyOffice Workspace und Documentserver als selfhosted Plattform zur gleichzeitigen, gemeinsamen Arbeit an Office-Dokumenten, Desktop, Browser und auf dem Android</li></ul><ul id="ebc1f7bc-ace0-45da-a675-40dbd4ca8325" class="bulleted-list"><li style="list-style-type:disc">Excalidraw und draw.io, selfhosted Tools zur kollaborativen Erstellung von Diagrammen, Whiteboards, Skizzen usw., Zugriff mittels Browser</li></ul><p id="a13f5428-814f-46d0-b3ca-d82c9b8b81b9" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Monitoring, Notifications</summary><div class="indented"><ul id="948e7111-8013-499b-a783-faaa837bf733" class="bulleted-list"><li style="list-style-type:disc">Uptime Kuma: selfhosted Monitoring Tool zur Überwachung der Erreichbarkeit, der gesamten HomeLab-Infrastruktur im dauerhaften Einsatz</li></ul><ul id="b2618345-9700-4322-b6f1-ab3089aca518" class="bulleted-list"><li style="list-style-type:disc">Grafana in Kombination mit Prometheus oder InfluxDB in mehreren Szenarien, via Docker und als onPrem-Installation</li></ul><ul id="53855002-1e09-404e-85e9-9295b3b22fb4" class="bulleted-list"><li style="list-style-type:disc">Netdata: als Grafana alternative, Monitoring des ProxMox-Clusters &amp; von Portainer-Hosts, Cloud und als selfhosted Linux-Installation</li></ul><ul id="31d06f95-8523-4121-aa3f-1d9caec62da1" class="bulleted-list"><li style="list-style-type:disc">Observium: Open Source Network Monitoring Tool als Turnkey-LXC</li></ul><ul id="154484c4-abfd-4f09-8f04-d83e791c5e24" class="bulleted-list"><li style="list-style-type:disc">Gotify: selfhosted Notification-Server in GO, mit entsprechenden Bashskripten zur Benachrichtigung bei verfügbaren Updates, Abschluss von ZFS Scrub usw.</li></ul><ul id="4de357f8-3299-4f97-aed2-4ed540bb5066" class="bulleted-list"><li style="list-style-type:disc">Eigene Notification-Bots in Telegram &amp; Zoho z.B. Benachrichtigung bei Downtime in Uptime Kuma</li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Kommunikation:</summary><div class="indented"><p id="f2dbf493-f655-4bee-9c3a-dc325acc8e75" class="">3CX: selfhosted VOIP-Telefonanlage, im HomeLab und für diverse Kunden im Praktikum</p><p id="edf7c951-b2d0-4ec1-a08a-815bfc5658fe" class="">PBXWare: alternative VOIP-Telefonanlage im HomeLab zum Testen</p><p id="344892a7-f7e5-4f33-8d90-55948d8f7b5d" class="">
+</p></div></details><p id="086a501b-1e5c-4cd8-a992-d705a776b814" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
